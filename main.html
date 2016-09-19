@@ -1,0 +1,55 @@
+<html>
+<head>
+   <title> Flashcards in golang and JS</title>
+</head>
+<body>
+   <br>
+   <br>
+      <div id="cardFront"></div>
+   <br>
+   <br>
+<hr>
+   <br>
+   <br>
+      <div id="cardBack"></div>
+   <br>
+   <br>
+      <input type="button" id="flip" value="Flip" onclick="cardFlip()">
+      <input type="button" id="cardNext" value="Next Card" onclick="cardNext()">
+   <br>
+   <br>
+      <p>Click <a href="/cardform">here</a> to add new cards to the deck.</p>
+   <br>
+   <br>
+      <script type="text/javascript" language="javascript">
+      function Card(front, back) {
+      	this.front = front;
+      	this.back = back;
+      }
+
+      var cardFront = document.getElementById('cardFront');
+      var cardBack = document.getElementById('cardBack');
+      var flip = document.getElementById('flip');
+      var cardIndex = 0;
+      var deck = {{.}};	//json data should be stored here
+
+      function cardFlip(){
+       if (cardFront.style.display != "none") {
+              cardFront.style.display = "none";
+              cardBack.style.display = "block";
+          }
+          else {
+              cardFront.style.display = "block";
+              cardBack.style.display = "none";
+          }
+      }
+
+      function cardNext() {
+      	cardIndex = (cardIndex+1)%(deck.length);
+         cardBack.style.display = "none"
+      	cardFront.innerHTML = deck[cardIndex].front;
+      	cardBack.innerHTML = deck[cardIndex].back;
+      }
+      </script>
+</body>
+</html>
