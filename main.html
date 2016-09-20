@@ -14,7 +14,7 @@
       <div id="cardBack"></div>
    <br>
    <br>
-      <input type="button" id="flip" value="Flip" onclick="cardFlip()">
+      <input type="button" id="cardFlip" value="Flip" onclick="cardFlip()">
       <input type="button" id="cardNext" value="Next Card" onclick="cardNext()">
    <br>
    <br>
@@ -29,7 +29,6 @@
 
       var cardFront = document.getElementById('cardFront');
       var cardBack = document.getElementById('cardBack');
-      var flip = document.getElementById('flip');
       var cardIndex = 0;
       var deck = {{.}};	//json data should be stored here
 
