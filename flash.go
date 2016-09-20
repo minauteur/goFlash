@@ -17,7 +17,7 @@ type Deck struct {
 	Cards []Card 			//secondary struct allowing new "card" items to be stored in slices for serving/transport			
 }
 
-var deck = []Card{}
+var deck = []Card{}			//global declaration of deck (which is of type Deck) allows its value to be accessed by functions below
 
 func servemain(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("main.html")
