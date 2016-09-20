@@ -9,12 +9,12 @@ import (
 )
 
 type Card struct {
-	Front string `json:"front"`
+	Front string `json:"front"` 	//tagged JSON for clarity, will ease implementation/addition of new fields (eg "category") for sorting in the future 
 	Back  string `json:"back"`
 }
 
 type Deck struct {
-	Cards []Card
+	Cards []Card 			//secondary struct allowing new "card" items to be stored in slices for serving/transport			
 }
 
 var deck = []Card{}
@@ -29,30 +29,30 @@ func servemain(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), 500)
 		return
 	}
-	t.Execute(w, template.JS(b))
+	t.Execute(w, template.JS(b))	//escapes stored JSON data within a script element for proper front-end consumption
 }
 
-func cardform(w http.ResponseWriter, r *http.Request) {
+func cardform(w http.ResponseWriter, r *http.Request) {	//serves form for adding custom cards when /cardform handler is invoked
 	t, _ := template.ParseFiles("cardadd.html")
 	t.Execute(w, nil)
 }
 
 func cardadd(w http.ResponseWriter, r *http.Request) {
 	var newcard Card
-	newcard.Front = r.FormValue("term")
-	newcard.Back = r.FormValue("definition")
+	newcard.Front = r.FormValue("term")		//HTML form input hooks for storage
+	newcard.Back = r.FormValue("definition")	//
 	deck = append(deck, newcard)
 	b, err := json.MarshalIndent(deck, "", "    ")
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		return
 	}
-	os.Stdout.Write(b)
+	os.Stdout.Write(b)				//each new card is written to the console on form submission to confirm proper form function and to test for Marshalling/JSON errors.
 	t, _ := template.ParseFiles("cardadd.html")
 	t.Execute(w, nil)
 }
 
-func main() {
+func main() {						//handlers
 	http.HandleFunc("/", servemain)
 	http.HandleFunc("/cardform", cardform)
 	http.HandleFunc("/cardadd", cardadd)
