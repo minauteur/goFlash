@@ -38,9 +38,9 @@ func cardform(w http.ResponseWriter, r *http.Request) {	//serves form for adding
 }
 
 func cardadd(w http.ResponseWriter, r *http.Request) {
-	var newcard Card	//defining newcard (of type Card) that will contain our form data
-	newcard.Front = r.FormValue("term")				//HTML form input hooks for storage
-	newcard.Back = r.FormValue("definition")	//
+	var newcard Card	//defining newcard (of type Card) to hold form data
+	newcard.Front = r.FormValue("term")	//HTML form input hooks for storage
+	newcard.Back = r.FormValue("definition")//
 	deck = append(deck, newcard)	//append form inputs to our globally stored data for template injection
 	b, err := json.MarshalIndent(deck, "", "    ")	//format deck for legibility
 	if err != nil {
