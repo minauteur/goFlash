@@ -32,6 +32,7 @@
       var cardIndex = 0;
       var deck = {{.}};	//json data should be stored here
       cardFront.innerHTML = deck[cardIndex].front;
+      cardBack.innerHTML = deck[cardIndex].back;
 
       function cardFlip(){
        if (cardFront.style.display != "none") {
