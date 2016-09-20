@@ -5,13 +5,13 @@
 <body>
    <br>
    <br>
-      <div id="cardFront"></div>
+      <div id="cardFront" style="display:block;"></div>
    <br>
    <br>
 <hr>
    <br>
    <br>
-      <div id="cardBack"></div>
+      <div id="cardBack"style="display:none;"></div>
    <br>
    <br>
       <input type="button" id="cardFlip" value="Flip" onclick="cardFlip()">
@@ -48,7 +48,7 @@
          cardIndex = (cardIndex+1)%(deck.length);
          cardFront.innerHTML = deck[cardIndex].front;
          cardBack.innerHTML = deck[cardIndex].back;
-            if (cardFront.style.display = "none") {
+            if (cardFront.style.display != "block") {
               cardFront.style.display = "none";
               cardBack.style.display = "block";
           }
