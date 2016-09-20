@@ -46,7 +46,7 @@
 
       function cardNext() {
       	cardIndex = (cardIndex+1)%(deck.length);
-         cardBack.style.display = "none"
+         cardBack.style.display = "none";
       	cardFront.innerHTML = deck[cardIndex].front;
       	cardBack.innerHTML = deck[cardIndex].back;
       }
