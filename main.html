@@ -45,10 +45,17 @@
       }
 
       function cardNext() {
-      	cardIndex = (cardIndex+1)%(deck.length);
-         cardBack.style.display = "none";
-      	cardFront.innerHTML = deck[cardIndex].front;
-      	cardBack.innerHTML = deck[cardIndex].back;
+         cardIndex = (cardIndex+1)%(deck.length);
+         cardFront.innerHTML = deck[cardIndex].front;
+         cardBack.innerHTML = deck[cardIndex].back;
+            if (cardFront.style.display != "none") {
+              cardFront.style.display = "none";
+              cardBack.style.display = "block";
+          }
+            else {
+              cardFront.style.display = "block";
+              cardBack.style.display = "none";
+          }
       }
       </script>
 </body>
