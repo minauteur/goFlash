@@ -9,7 +9,7 @@ import (
 )
 
 type Card struct {
-	Front string `json:"front"` //tagged JSON for clarity, will ease implementation/addition  
+	Front string `json:"front"`	//tagged JSON for clarity, will ease implementation/addition  
 	Back  string `json:"back"`	//of new fields (eg "category") to implement sorting in the future
 }
 
